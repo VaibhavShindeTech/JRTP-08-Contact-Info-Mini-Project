@@ -31,6 +31,8 @@ public class Contact {
 	private String contactEmail;
 	@Column(name = "CONTACT_NUMBER")
 	private Long contactPhone;
+	@Column(name = "CONTACT_STATUS")
+	private Boolean contactStatus;
 	@Column(name = "CREATED_DATE")
 	@CreationTimestamp
 	private LocalDate contactCreatedDate;

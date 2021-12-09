@@ -12,4 +12,6 @@ public class ContactForm {
 	private Long contactPhone;
 	private LocalDate contactCreatedDate;
 	private LocalDate contactUpdatedDate;
+	private Boolean contactStatus;
+
 }

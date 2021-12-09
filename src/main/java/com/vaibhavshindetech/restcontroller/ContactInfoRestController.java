@@ -7,6 +7,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class ContactInfoRestController {
 	@GetMapping(value = "/welcome")
 	public String greetMsg() {
-		return "<h1>Welcome To Contact Info App</h1>";
+		return "<h1>Welcome To Contact Info App Today i have implemented service class</h1>";
 	}
 }
