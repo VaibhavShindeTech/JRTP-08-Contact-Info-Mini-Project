@@ -21,9 +21,9 @@ public class ContactServiceImp implements ContactService {
 	public String saveContact(ContactForm contactForm) {
 		Contact entity = new Contact();
 		BeanUtils.copyProperties(contactForm, entity);
-		if (entity.getContactId() == null) {
-			entity.setContactStatusActive("Y");
-			contactRepository.save(entity);
+		entity.setContactStatusActive("Y");
+		contactRepository.save(entity);
+		if (entity.getContactId() != null) {
 			return "SUCCESS";
 		}
 		return "FAILURE";
