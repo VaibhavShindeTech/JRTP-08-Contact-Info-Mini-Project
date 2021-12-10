@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -23,7 +24,7 @@ import lombok.NoArgsConstructor;
 public class Contact {
 	@Id
 	@Column(name = "CONTACT_ID")
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer contactId;
 	@Column(name = "CONTACT_NAME")
 	private String contactName;
@@ -31,8 +32,8 @@ public class Contact {
 	private String contactEmail;
 	@Column(name = "CONTACT_NUMBER")
 	private Long contactPhone;
-	@Column(name = "CONTACT_STATUS")
-	private Boolean contactStatus;
+	@Column(name = "CONTACT_Active")
+	private String contactStatusActive;
 	@Column(name = "CREATED_DATE")
 	@CreationTimestamp
 	private LocalDate contactCreatedDate;
