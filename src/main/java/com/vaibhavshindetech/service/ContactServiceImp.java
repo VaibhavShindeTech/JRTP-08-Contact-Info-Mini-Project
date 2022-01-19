@@ -1,7 +1,9 @@
 package com.vaibhavshindetech.service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.BeanUtils;
@@ -16,18 +18,36 @@ import com.vaibhavshindetech.repository.ContactRepository;
 public class ContactServiceImp implements ContactService {
 	@Autowired
 	private ContactRepository contactRepository;
-
+	
 	@Override
-	public String saveContact(ContactForm contactForm) {
+	public Map<String, String> saveContact(ContactForm contactForm) {
 		Contact entity = new Contact();
 		BeanUtils.copyProperties(contactForm, entity);
 		entity.setContactStatusActive("Y");
 		contactRepository.save(entity);
+		Map<String, String> message=new HashMap<>();
 		if (entity.getContactId() != null) {
-			return "SUCCESS";
+			 message.put("Saved","SUCCESS") ;
+		}else {
+			message.put("Saved","Fail") ;
 		}
-		return "FAILURE";
+		return message;
 	}
+
+//	@Override
+//	public Map<String, String> saveContact(ContactForm contactForm) {
+//		Contact entity = new Contact();
+//		BeanUtils.copyProperties(contactForm, entity);
+//		entity.setContactStatusActive("Y");
+//		contactRepository.save(entity);
+//		Map<String, String> message=new HashMap<>();
+//		if (entity.getContactId() != null) {
+//			 message.put("Saved","SUCCESS") ;
+//		}else {
+//			message.put("Saved","Fail") ;
+//		}
+//		return message;
+//	}
 
 	@Override
 	public List<ContactForm> viewContacts() {
@@ -65,5 +85,7 @@ public class ContactServiceImp implements ContactService {
 		}
 		return dataList;
 	}
+
+	
 
 }
